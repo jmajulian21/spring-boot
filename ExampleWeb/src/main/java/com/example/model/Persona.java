@@ -4,10 +4,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
 public class Persona {
 	@Id
-	private int idPersona;
+	@Column(name="id_persona")
+	private Integer idPersona;
 	
 	@Column(name="apellido")
     private String apellido;
@@ -23,22 +27,12 @@ public class Persona {
 	
 	@Column(name="email")
 	private String email;
-
-	public Persona() {
-		super();
-	}
-	
-	public Persona(int idPersona, String nombre) {
-		this();
-		this.idPersona = idPersona;
-		this.nombre = nombre;
-	}
 	
 //MARK Getter y Setter
-	public int getIdPersona() {
+	public Integer getIdPersona() {
 		return idPersona;
 	}
-	public void setIdPersona(int idPersona) {
+	public void setIdPersona(Integer idPersona) {
 		this.idPersona = idPersona;
 	}
 	public String getNombre() {
